@@ -43,4 +43,38 @@ open aop-docs.zip to check static index.html page
         "sender": { "id": 456, "login": "alice" }
       }'
  
+ ## Quickstart (Docker, recommended)
 
+**Prereqs:** Docker Desktop (or equivalent) running.
+
+```bash
+# Start the mock server (Prism)
+docker compose up -d mock
+
+# Health check
+curl -i -H 'Authorization: Bearer demo-token' http://127.0.0.1:8080/healthz
+
+# List issues
+curl -i -H 'Authorization: Bearer demo-token' \
+  'http://127.0.0.1:8080/issues?page=1&state=open&per_page=10'
+
+# Get an issue
+curl -i -H 'Authorization: Bearer demo-token' \
+  'http://127.0.0.1:8080/issues/1'
+
+# Update an issue (example: close)
+curl -i -X PATCH -H 'Authorization: Bearer demo-token' -H 'Content-Type: application/json' \
+  'http://127.0.0.1:8080/issues/1' \
+  -d '{"state":"closed"}'
+
+# Webhook (schema + headers valid)
+curl -i -X POST 'http://127.0.0.1:8080/webhook' \
+  -H 'Authorization: Bearer demo-token' \
+  -H 'Content-Type: application/json' \
+  -H 'X-GitHub-Event: issues' \
+  -H 'X-GitHub-Delivery: 8e9a1d3a-4b8a-4a8e-9f52-0b1d1f2f3c4d' \
+  -H 'X-Hub-Signature-256: sha256=aee73876dc0cbb71cf5122dd391733e28fabc009eba54be1a2066cb1e92c81d1' \
+  -d '{"action":"opened","issue":{"id":123,"number":1,"title":"hello","state":"open","user":{"id":456,"login":"alice"}},"repository":{"id":789,"full_name":"you/your-repo"},"sender":{"id":456,"login":"alice"}}'
+
+# Stop the mock
+docker compose down
