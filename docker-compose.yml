@@ -1,8 +1,9 @@
 services:
   mock:
     image: stoplight/prism:5
+    platform: linux/amd64        
     volumes:
-      - ./openapi.yml:/work/openapi.yml:ro   # note: repo uses openapi.yml
-    command: ["mock", "-h", "0.0.0.0", "-p", "8080", "/work/openapi.yml"]
+      - ./openapi.yml:/work/openapi.yml:ro
+    command: ["mock","-h","0.0.0.0","-p","8080","/work/openapi.yml"]
     ports:
-      - "8080:8080"
+      - "${PORT:-8080}:8080"     
