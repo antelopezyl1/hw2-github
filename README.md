@@ -8,7 +8,8 @@ We use the OpenAPI 3.1 specification to document our API. The main specification
    npx @stoplight/spectral-cli lint openapi.yml
    npx @stoplight/prism-cli mock -p 8080 openapi.yml：
 
-
+.env:
+All env parameters are defined in /src/main/resources/static, please use Run-configurations-env to input correct values.
 
 
 
