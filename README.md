@@ -42,7 +42,15 @@ open aop-docs.zip to check static index.html page
         },
         "sender": { "id": 456, "login": "alice" }
       }'
- 
+      
+ # GitHub Issues API — Mock & Quickstart
+
+This repo uses **OpenAPI 3.1** to define a GitHub Issues service and provides a
+Prism mock so you can develop, test, and demo without a backend.
+
+- Main spec: `openapi.yml`
+- Static API docs: `api-docs.zip` (contains an `index.html`)
+
  ## Quickstart (Docker, recommended)
 
 **Prereqs:** Docker Desktop (or equivalent) running.
