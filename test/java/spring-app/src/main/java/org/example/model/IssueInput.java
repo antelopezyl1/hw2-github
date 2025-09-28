@@ -3,13 +3,14 @@ package org.example.model;
 import jakarta.validation.constraints.NotBlank;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class IssueInput {
     @NotBlank(message = "Title is required")
     private String title;
     private String body;
-    private List<String> labels;
+    private List<String> labels = new ArrayList<>();;
 
     public String getTitle() {return title;}
     public void setTitle(String title) {this.title = title;}

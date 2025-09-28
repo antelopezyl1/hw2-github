@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/issues/{issueNumber}/comments")
 @Validated
 public class CommentsController {
     private final GitHubService gitHubService;
@@ -22,7 +21,7 @@ public class CommentsController {
     }
 
     // post /issues/{number}/comments
-    @PostMapping
+    @PostMapping("/issues/{issueNumber}/comments")
     public ResponseEntity<Comment> postComment(
             @PathVariable int issueNumber,
             @Validated @RequestBody CommentInput commentInput)
@@ -32,7 +31,7 @@ public class CommentsController {
     }
 
     //get comments list
-    @GetMapping
+    @GetMapping("/issues/{issueNumber}/comments")
     public ResponseEntity<List<Comment>> getComments(
             @PathVariable int issueNumber,
             @RequestParam(defaultValue = "1") int page,
@@ -43,20 +42,19 @@ public class CommentsController {
     }
 
     //update a specific comment
-    @PatchMapping("/{commentId}")
+    @PatchMapping("/comments/{commentId}")
     public ResponseEntity<Comment> updateComment(
-            @PathVariable int issueNumber,
+            @PathVariable Long commentId,
             @RequestBody CommentInput updateInput)
     {
-        Comment updatedComment = this.gitHubService.patchComment(issueNumber, updateInput);
+        Comment updatedComment = this.gitHubService.patchComment(commentId, updateInput);
         return ResponseEntity.ok(updatedComment);
     }
 
     //delete a specific comment
-    @DeleteMapping("/{commentId}")
+    @DeleteMapping("/comments/{commentId}")
     public ResponseEntity<Void> deleteComment(
-            @PathVariable int issueNumber,
-            @PathVariable int commentId)
+            @PathVariable Long commentId)
     {
         this.gitHubService.deleteComment(commentId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

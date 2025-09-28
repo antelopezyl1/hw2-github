@@ -106,7 +106,7 @@ public class GitHubService {
     }
 
     //update a specific comment
-    public Comment patchComment(int commentId, CommentInput updateInput) {
+    public Comment patchComment(Long commentId, CommentInput updateInput) {
         return gitHubWebClient.patch()
                 .uri("/issues/comments/{commentId}", commentId)
                 .bodyValue(updateInput)
@@ -118,13 +118,18 @@ public class GitHubService {
     }
 
     // delete a specific comment
-    public void deleteComment(int commentId) {
-        gitHubWebClient.delete()
+    public void deleteComment(Long commentId) {
+        this.gitHubWebClient.delete()
                 .uri("/issues/comments/{commentId}", commentId)
                 .retrieve()
-                .onStatus(status -> status == HttpStatus.NOT_FOUND, clientResponse ->
-                        Mono.error(new ResourceNotFoundException("Comment not found: " + commentId)))
-                .bodyToMono(Void.class)
+                .onStatus(status -> status.isError(), clientResponse -> {
+                    return Mono.error(new org.springframework.web.reactive.function.client.WebClientResponseException(
+                            "Failed to delete comment on GitHub",
+                            clientResponse.statusCode().value(),
+                            clientResponse.statusCode().toString(),
+                            null, null, null));
+                })
+                .toBodilessEntity()
                 .block();
     }
 }
