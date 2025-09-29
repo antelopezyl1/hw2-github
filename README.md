@@ -15,6 +15,17 @@ All env parameters are defined in /src/main/resources/static, please use Run-con
 
 This repo ships an OpenAPI 3.1 contract (openapi.yml) and a Prism mock for development and testing without the real backend.
 
+## References
+- Some code templates were assisted by ChatGPT:
+  - `webClientBuilder` in `GitHubConfig`
+  - Method-chain template for `gitHubWebClient` HTTP CRUD in `GitHubService`
+  - `mockMvc` template for `healthzTest` in `HealthControllerTest`
+
+Building a service wrapping the GitHub REST API for single repository issues
+
+.API Documentation  
+We use the OpenAPI 3.1 specification to document our API. The main specification file is located at `openapi.yml`.
+
 ## Quickstart
 ```bash
 # start mock on 8080
@@ -42,4 +53,4 @@ curl -i -X POST 'http://127.0.0.1:8080/webhook' \
   -H 'X-Hub-Signature-256: sha256=aee73876dc0cbb71cf5122dd391733e28fabc009eba54be1a2066cb1e92c81d1' \
   -d '{"action":"opened","issue":{"id":1,"number":1,"title":"hello","state":"open","user":{"id":1,"login":"alice"}},"repository":{"id":1,"full_name":"<owner>/<repo>"},"sender":{"id":1,"login":"alice"}}'
 
-* UI_Screenshots.docx for: container running, health 200, issues 200, patch 200, webhook 204.
+## UI_Screenshots.docx for: container running, health 200, issues 200, patch 200, webhook 204.
