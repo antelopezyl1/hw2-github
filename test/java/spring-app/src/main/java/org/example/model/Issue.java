@@ -4,8 +4,9 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SplittableRandom;
 
+
+//Author: Yuling Zang
 public class Issue {
     @NotBlank(message = "Number is required")
     @NotBlank(message = "Title is required")

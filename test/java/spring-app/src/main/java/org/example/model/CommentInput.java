@@ -2,6 +2,7 @@ package org.example.model;
 
 import jakarta.validation.constraints.NotBlank;
 
+//Author: Yuling Zang
 public class CommentInput {
     @NotBlank(message = "Body is required")
     private String body;

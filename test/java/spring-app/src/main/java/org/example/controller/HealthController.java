@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+//Author: Yuling Zang
 @RestController
 public class HealthController {
     @GetMapping("/healthz") //mapping to path in openapi.yml

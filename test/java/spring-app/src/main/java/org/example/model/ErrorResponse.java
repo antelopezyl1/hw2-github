@@ -2,6 +2,7 @@ package org.example.model;
 
 import jakarta.validation.constraints.NotBlank;
 
+//Author: Yuling Zang
 public class ErrorResponse {
     @NotBlank(message = "Code is required")
     @NotBlank(message = "Message is required")
