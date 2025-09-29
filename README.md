@@ -27,7 +27,7 @@ npx @stoplight/prism-cli mock -p 8080 openapi.yml
 
 ## Quickstart
 
-### Using Docker (Recommended)
+### Using Docker 
 
 ```bash
 # Start the mock server
