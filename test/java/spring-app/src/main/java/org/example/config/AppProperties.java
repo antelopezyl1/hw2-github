@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 
 // Spring Boot can check configs with prefix = "app" in application.yml
+//Author: Yuling Zang
 @ConfigurationProperties(prefix = "app")
 public class AppProperties {
     private GitHub github = new GitHub();

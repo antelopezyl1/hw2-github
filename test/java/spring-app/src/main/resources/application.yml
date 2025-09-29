@@ -11,3 +11,11 @@ app:
 springdoc:
   swagger-ui:
     url: /openapi.yml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+    health:
+      show-details: always

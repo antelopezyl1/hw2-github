@@ -1,6 +1,6 @@
 package org.example.model;
 
-
+//Author: Yuling Zang
 public class IssuePatch {
     private String title;
     private String body;
