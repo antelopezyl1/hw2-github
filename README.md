@@ -13,7 +13,7 @@ All env parameters are defined in /src/main/resources/static, please use Run-con
 
 # GitHub Issues API — Mock (DevOps & Docs)
 
-This repo ships an **OpenAPI 3.1** contract (`openapi.yml`) and a **Prism mock** so teammates can develop and test without a backend.
+This repo ships an OpenAPI 3.1 contract (openapi.yml) and a Prism mock for development and testing without the real backend.
 
 ## Quickstart
 ```bash
@@ -42,56 +42,4 @@ curl -i -X POST 'http://127.0.0.1:8080/webhook' \
   -H 'X-Hub-Signature-256: sha256=aee73876dc0cbb71cf5122dd391733e28fabc009eba54be1a2066cb1e92c81d1' \
   -d '{"action":"opened","issue":{"id":1,"number":1,"title":"hello","state":"open","user":{"id":1,"login":"alice"}},"repository":{"id":1,"full_name":"<owner>/<repo>"},"sender":{"id":1,"login":"alice"}}'
 
-UI_Screenshots.docx for: container running, health 200, issues 200, patch 200, webhook 204.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
+* UI_Screenshots.docx for: container running, health 200, issues 200, patch 200, webhook 204.
