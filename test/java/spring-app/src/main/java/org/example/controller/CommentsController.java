@@ -14,6 +14,7 @@ import java.util.List;
 //Author: Yuling Zang
 @RestController
 @Validated
+@CrossOrigin(origins = "*")
 public class CommentsController {
     private final GitHubService gitHubService;
 
