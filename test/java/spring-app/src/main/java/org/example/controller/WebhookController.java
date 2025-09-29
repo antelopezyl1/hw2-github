@@ -19,6 +19,7 @@ import java.util.UUID;
  * - Responses: 204 | 400 {error} | 401 {error}
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class WebhookController {
 
 	private final WebhookService webhookService;

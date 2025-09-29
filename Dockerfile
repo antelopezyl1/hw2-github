@@ -1,7 +1,15 @@
-# Run the OpenAPI mock with Prism (no backend needed)
-FROM node:20-alpine
-RUN npm i -g @stoplight/prism-cli
-WORKDIR /work
-COPY openapi.yml /work/openapi.yml
+# ---- build ----
+FROM maven:3.9.8-eclipse-temurin-21 AS build
+WORKDIR /workspace
+COPY pom.xml ./
+RUN --mount=type=cache,target=/root/.m2 mvn -q -DskipTests dependency:go-offline
+COPY src ./src
+RUN --mount=type=cache,target=/root/.m2 mvn -q -DskipTests package
+
+# ---- runtime ----
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+ENV PORT=8080
 EXPOSE 8080
-CMD ["prism","mock","-h","0.0.0.0","-p","8080","/work/openapi.yml"]
+COPY --from=build /workspace/target/*-SNAPSHOT.jar /app/app.jar
+ENTRYPOINT ["java","-jar","/app/app.jar"]

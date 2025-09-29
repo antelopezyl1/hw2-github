@@ -1,7 +1,17 @@
 services:
+  app:
+    build: .
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_OWNER: ${GITHUB_OWNER}
+      GITHUB_REPO: ${GITHUB_REPO}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET}
+      PORT: 8080
+  # mock 
   mock:
     image: stoplight/prism:5
-    # platform: linux/amd64   
     volumes:
       - ./openapi.yml:/work/openapi.yml:ro
     command: ["mock","-h","0.0.0.0","-p","8080","/work/openapi.yml"]

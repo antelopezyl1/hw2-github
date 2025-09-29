@@ -17,6 +17,7 @@ import java.util.List;
 //Author: Yuling Zang
 @RestController
 @RequestMapping("/issues")
+@CrossOrigin(origins = "*")
 public class IssuesController {
     private final GitHubService gitHubService;
 

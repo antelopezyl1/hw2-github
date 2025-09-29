@@ -107,7 +107,7 @@ The following environment variables are used by the real backend:
 | `WEBHOOK_SECRET` | Webhook secret for signature verification | `your-secret-key` |
 | `PORT` | Server port (default: 8080) | `8080` |
 
-> **Note**: Environment parameters are defined in `/src/main/resources/static`. Use Run Configurations → Environment to input correct values.
+> **Note**: Environment parameters are defined in `/src/main/resources/application.yml`. Use Run Configurations → Environment to input correct values.
 
 ## Webhook Setup
 
