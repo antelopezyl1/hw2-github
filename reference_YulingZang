@@ -1,5 +1,0 @@
-Reference section:
-1. Some code in some methods refer to chatGPT:
-   .webClientBuilder in GitHubConfig
-   .method chain template for gitHubWebClient HTTP CRUD in GitHubService class
-   .mockMvc template for healthzTest in HealthControllerTest   
